@@ -2,9 +2,10 @@ import { Guitar } from "../types";
 
 type GuitarProps = {
   guitar: Guitar;
+  addToCart: (guitar: Guitar) => void;
 };
 
-const Guitar = ({ guitar }: GuitarProps) => {
+const Guitar = ({ guitar, addToCart }: GuitarProps) => {
   const { name, image, description, price } = guitar;
 
   return (
@@ -19,6 +20,7 @@ const Guitar = ({ guitar }: GuitarProps) => {
         <p className="fw-black text-primary fs-3">${price}</p>
         <button
           type="button"
+          onClick={() => addToCart(guitar)}
           className="btn btn-dark w-100">
           Agregar al Carrito
         </button>

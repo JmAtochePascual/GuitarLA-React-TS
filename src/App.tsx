@@ -3,11 +3,17 @@ import Header from "./components/Header"
 import useGuitar from "./hooks/useGuitar";
 
 function App() {
-  const { db } = useGuitar();
+  const { db, cart, addToCart, deleteItem, increaseQuantity, decreaseQuantity, clearCart } = useGuitar();
 
   return (
     <>
-      <Header />
+      <Header
+        cart={cart}
+        deleteItem={deleteItem}
+        increaseQuantity={increaseQuantity}
+        decreaseQuantity={decreaseQuantity}
+        clearCart={clearCart}
+      />
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
@@ -18,6 +24,8 @@ function App() {
               <Guitar
                 key={guitar.id}
                 guitar={guitar}
+                addToCart={addToCart}
+
               />
             )
           }

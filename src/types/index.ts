@@ -5,3 +5,7 @@ export type Guitar = {
   description: string;
   price: number;
 };
+
+export type Order = Guitar & {
+  quantity: number;
+};
