@@ -1,4 +1,4 @@
-export type GuitarItem = {
+export type Guitar = {
   id: number;
   name: string;
   image: string;
