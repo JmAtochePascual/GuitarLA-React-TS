@@ -1,13 +1,13 @@
+import { Dispatch } from "react";
 import { Order } from "../types";
+import { GuitarAction } from "../reducer/guitarReducer";
 
 type ItemCartProps = {
   item: Order;
-  deleteItem: (id: Order['id']) => void;
-  increaseQuantity: (id: Order['id']) => void;
-  decreaseQuantity: (id: Order['id']) => void;
+  dispatch: Dispatch<GuitarAction>;
 };
 
-const ItemCart = ({ item, deleteItem, increaseQuantity, decreaseQuantity }: ItemCartProps) => {
+const ItemCart = ({ item, dispatch }: ItemCartProps) => {
   return (
     <tr>
       <td>
@@ -28,7 +28,7 @@ const ItemCart = ({ item, deleteItem, increaseQuantity, decreaseQuantity }: Item
       <td className="flex align-items-start gap-4">
         <button
           type="button"
-          onClick={() => decreaseQuantity(item.id)}
+          onClick={() => dispatch({ type: 'decrease-quantity', payload: { id: item.id } })}
           className="btn btn-dark">
           -
         </button>
@@ -37,7 +37,7 @@ const ItemCart = ({ item, deleteItem, increaseQuantity, decreaseQuantity }: Item
 
         <button
           type="button"
-          onClick={() => increaseQuantity(item.id)}
+          onClick={() => dispatch({ type: 'increase-quantity', payload: { id: item.id } })}
           className="btn btn-dark">
           +
         </button>
@@ -46,7 +46,7 @@ const ItemCart = ({ item, deleteItem, increaseQuantity, decreaseQuantity }: Item
       <td>
         <button
           type="button"
-          onClick={() => deleteItem(item.id)}
+          onClick={() => dispatch({ type: 'remove-guitar', payload: { id: item.id } })}
           className="btn btn-danger">
           X
         </button>

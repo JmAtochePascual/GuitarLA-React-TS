@@ -1,16 +1,14 @@
+import { Dispatch } from "react";
 import { Order } from "../types";
 import ItemCart from "./ItemCart";
+import { GuitarAction } from "../reducer/guitarReducer";
 
 type HeaderProps = {
   cart: Order[];
-  deleteItem: (id: Order['id']) => void;
-  increaseQuantity: (id: Order['id']) => void;
-  decreaseQuantity: (id: Order['id']) => void;
-  clearCart: () => void;
+  dispatch: Dispatch<GuitarAction>;
 };
 
-const Header = ({ cart, deleteItem, increaseQuantity, decreaseQuantity, clearCart }: HeaderProps) => {
-
+const Header = ({ cart, dispatch }: HeaderProps) => {
   const isEmpty = cart.length === 0;
 
   // Calculate the total to pay
@@ -52,9 +50,7 @@ const Header = ({ cart, deleteItem, increaseQuantity, decreaseQuantity, clearCar
                               <ItemCart
                                 key={item.id}
                                 item={item}
-                                deleteItem={deleteItem}
-                                increaseQuantity={increaseQuantity}
-                                decreaseQuantity={decreaseQuantity}
+                                dispatch={dispatch}
                               />
                             )
                           }
@@ -62,7 +58,6 @@ const Header = ({ cart, deleteItem, increaseQuantity, decreaseQuantity, clearCar
                       </table>
                       <p className="text-end">Total pagar: <span className="fw-bold">${totalPay}</span></p>
                       <button
-                        onClick={clearCart}
                         className="btn btn-dark w-100 mt-3 p-2">
                         Vaciar Carrito
                       </button>
