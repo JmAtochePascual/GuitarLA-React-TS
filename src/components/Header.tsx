@@ -58,6 +58,7 @@ const Header = ({ cart, dispatch }: HeaderProps) => {
                       </table>
                       <p className="text-end">Total pagar: <span className="fw-bold">${totalPay}</span></p>
                       <button
+                        onClick={() => dispatch({ type: 'clear-cart' })}
                         className="btn btn-dark w-100 mt-3 p-2">
                         Vaciar Carrito
                       </button>

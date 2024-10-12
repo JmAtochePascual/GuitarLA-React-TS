@@ -4,7 +4,8 @@ export type GuitarAction =
   { type: 'add-guitar', payload: { guitar: Guitar } } |
   { type: 'remove-guitar', payload: { id: Guitar['id'] } } |
   { type: 'increase-quantity', payload: { id: Guitar['id'] } } |
-  { type: 'decrease-quantity', payload: { id: Guitar['id'] } }
+  { type: 'decrease-quantity', payload: { id: Guitar['id'] } } |
+  { type: 'clear-cart' }
 
 export type GuitarState = {
   cart: Order[]
@@ -45,6 +46,8 @@ export const guitarReducer = (state: GuitarState = initialState, action: GuitarA
     if (item?.quantity === MIN_QUANTITY) return { cart: removeItem(action.payload.id) };
     return { cart: decreaseQuantity(action.payload.id) };
   }
+
+  if (action.type === 'clear-cart') return { cart: [] };
 
   return state;
 }
