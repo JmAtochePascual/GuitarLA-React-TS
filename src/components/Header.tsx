@@ -1,5 +1,11 @@
+import { TGuitarCartItem } from "../types";
+import GuitarCartItem from "./GuitarCartItem";
 
-const Header = () => {
+type HeaderProps = {
+  cart: TGuitarCartItem[];
+};
+
+const Header = ({ cart }: HeaderProps) => {
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -26,35 +32,14 @@ const Header = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>
-                        <img className="img-fluid" src="/img/guitarra_02.jpg" alt="imagen guitarra" />
-                      </td>
-                      <td>SRV</td>
-                      <td className="fw-bold">
-                        $299
-                      </td>
-                      <td className="flex align-items-start gap-4">
-                        <button
-                          type="button"
-                          className="btn btn-dark">
-                          -
-                        </button>
-                        1
-                        <button
-                          type="button"
-                          className="btn btn-dark">
-                          +
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          type="button"
-                          className="btn btn-danger">
-                          X
-                        </button>
-                      </td>
-                    </tr>
+                    {
+                      cart.map(guitarItem =>
+                        <GuitarCartItem
+                          key={guitarItem.id}
+                          guitarItem={guitarItem}
+                        />
+                      )
+                    }
                   </tbody>
                 </table>
                 <p className="text-end">Total pagar: <span className="fw-bold">$899</span></p>
