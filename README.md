@@ -11,29 +11,33 @@ Guitar Store es una aplicación web de comercio electrónico especializada en la
 - **LocalStorage**: Para persistir el estado del carrito de compras
 - **ESLint**: Para mantener la calidad y consistencia del código
 - **Git**: Sistema de control de versiones
+- **GitHub Pages**: Para el despliegue de la aplicación
 
 ## 📁 Estructura del Proyecto
 
-- **src**: Directorio principal del código fuente
-  - **components**: Componentes reutilizables de React
-    - Guitar.tsx: Componente para mostrar una guitarra individual
-    - GuitarCartItem.tsx: Componente para mostrar un item del carrito
-    - Header.tsx: Componente del encabezado con el carrito
-  - **data**: Datos estáticos de la aplicación
-    - guitars.ts: Array con la información de las guitarras
-  - **types**: Definiciones de tipos TypeScript
-    - index.ts: Tipos y interfaces compartidos
-  - App.tsx: Componente principal de la aplicación
-  - main.tsx: Punto de entrada de la aplicación
+- **src/**
+  - **components/**: Componentes reutilizables
+    - `Guitar.tsx`: Componente para mostrar una guitarra individual
+    - `GuitarCartItem.tsx`: Componente para mostrar un item del carrito
+    - `Header.tsx`: Componente del encabezado con el carrito
+  - **hooks/**
+    - `useCart.ts`: Hook personalizado para la lógica del carrito
+  - **data/**
+    - `guitars.ts`: Array con la información de las guitarras
+  - **types/**
+    - `index.ts`: Tipos y interfaces compartidos
+  - `App.tsx`: Componente principal
+  - `main.tsx`: Punto de entrada
 
 ## 🚀 Características Principales
 
 - Catálogo de guitarras con imágenes y detalles
 - Carrito de compras con persistencia local
-- Gestión de cantidades en el carrito
+- Gestión de cantidades en el carrito (mínimo 1, máximo 5)
 - Interfaz responsiva
 - Tipado estricto con TypeScript
 - Manejo de estado local con React hooks
+- Despliegue automático a GitHub Pages
 
 ## 🛠️ Instalación y Uso
 
