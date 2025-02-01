@@ -7,6 +7,7 @@ type HeaderProps = {
 
 const Header = ({ cart }: HeaderProps) => {
   const isCartEmpty = cart.length === 0;
+  const totaTolPay = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
   return (
     <header className="py-5 header">
@@ -47,7 +48,7 @@ const Header = ({ cart }: HeaderProps) => {
                           }
                         </tbody>
                       </table>
-                      <p className="text-end">Total pagar: <span className="fw-bold">$899</span></p>
+                      <p className="text-end">Total pagar: <span className="fw-bold">{totaTolPay}</span></p>
                       <button className="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
                     </>
                 }

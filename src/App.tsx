@@ -6,12 +6,19 @@ import { TGuitar, TGuitarCartItem } from "./types";
 
 function App() {
   const [cart, setCart] = useState<TGuitarCartItem[]>([]);
+  const INCREASE = 1;
+  const MAX_QUANTITY = 5;
 
   const existGuitar = (guitar: TGuitar): boolean => cart.some(item => item.id === guitar.id);
 
   const addToCart = (guitar: TGuitar) => setCart([...cart, { ...guitar, quantity: 1 }]);
 
-  const increaseQuantity = (guitar: TGuitar) => setCart(cart.map(item => item.id === guitar.id ? { ...item, quantity: item.quantity + 1 } : item));
+  const increaseQuantity = (guitar: TGuitar) => {
+    if (cart.find(item => item.id === guitar.id)!.quantity >= MAX_QUANTITY) return;
+
+    const newCart = cart.map(item => item.id === guitar.id ? { ...item, quantity: item.quantity + INCREASE } : item);
+    setCart(newCart);
+  }
 
   const handleCart = (guitar: TGuitar) => {
     if (existGuitar(guitar)) {
