@@ -1,8 +1,25 @@
+import { useState } from "react"
 import Guitar from "./components/Guitar"
 import Header from "./components/Header"
 import { GUITARS } from "./data/guitars"
+import { TGuitar, TGuitarCartItem } from "./types";
 
 function App() {
+  const [cart, setCart] = useState<TGuitarCartItem[]>([]);
+
+  const existGuitar = (guitar: TGuitar): boolean => cart.some(item => item.id === guitar.id);
+
+  const addToCart = (guitar: TGuitar) => setCart([...cart, { ...guitar, quantity: 1 }]);
+
+  const increaseQuantity = (guitar: TGuitar) => setCart(cart.map(item => item.id === guitar.id ? { ...item, quantity: item.quantity + 1 } : item));
+
+  const handleCart = (guitar: TGuitar) => {
+    if (existGuitar(guitar)) {
+      increaseQuantity(guitar);
+    } else {
+      addToCart(guitar);
+    }
+  };
 
   return (
     <>
@@ -17,6 +34,7 @@ function App() {
               <Guitar
                 key={guitar.id}
                 guitar={guitar}
+                handleCart={handleCart}
               />
             )
           }
