@@ -12,6 +12,8 @@ function App() {
 
   const addToCart = (guitar: TGuitar) => setCart([...cart, { ...guitar, quantity: 1 }]);
 
+  const searchCartItem = (id: TGuitar['id']) => cart.find(item => item.id === id);
+
   const removeFromCart = (id: TGuitar['id']) => {
     const newCart = cart.filter(item => item.id !== id);
     setCart(newCart);
@@ -35,7 +37,7 @@ function App() {
   }
 
   const handleCart = (guitar: TGuitar) => {
-    const existGuitar = cart.find(item => item.id === guitar.id);
+    const existGuitar = searchCartItem(guitar.id);
 
     if (existGuitar) {
       increaseQuantity(existGuitar);
