@@ -1,10 +1,10 @@
-import { TGuitar, TGuitarCartItem } from "../types";
-import GuitarCartItem from "./GuitarCartItem";
+import { TGuitarCartItem } from "../types";
+import GuitarCartItem from './GuitarCartItem';
 
 type HeaderProps = {
   cart: TGuitarCartItem[];
-  increaseQuantity: (id: TGuitar['id']) => void;
-  decreaseQuantity: (id: TGuitar['id']) => void;
+  increaseQuantity: (GuitarCartItem: TGuitarCartItem) => void;
+  decreaseQuantity: (GuitarCartItem: TGuitarCartItem) => void;
   removeFromCart: (id: TGuitarCartItem['id']) => void;
 };
 

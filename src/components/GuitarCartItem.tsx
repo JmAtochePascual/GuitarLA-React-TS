@@ -1,9 +1,9 @@
-import { TGuitar, TGuitarCartItem } from "../types";
+import { TGuitarCartItem } from "../types";
 
 type GuitarCartItemProps = {
   guitarItem: TGuitarCartItem;
-  increaseQuantity: (id: TGuitar['id']) => void;
-  decreaseQuantity: (id: TGuitar['id']) => void;
+  increaseQuantity: (GuitarCartItem: TGuitarCartItem) => void;
+  decreaseQuantity: (GuitarCartItem: TGuitarCartItem) => void;
   removeFromCart: (id: TGuitarCartItem['id']) => void;
 }
 
@@ -21,14 +21,14 @@ const GuitarCartItem = ({ guitarItem, increaseQuantity, decreaseQuantity, remove
       <td className="flex align-items-start gap-4">
         <button
           type="button"
-          onClick={() => decreaseQuantity(id)}
+          onClick={() => decreaseQuantity(guitarItem)}
           className="btn btn-dark">
           -
         </button>
         {quantity}
         <button
           type="button"
-          onClick={() => increaseQuantity(id)}
+          onClick={() => increaseQuantity(guitarItem)}
           className="btn btn-dark">
           +
         </button>

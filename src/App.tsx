@@ -10,8 +10,6 @@ function App() {
   const MAX_QUANTITY = 5;
   const MIN_QUANTITY = 1;
 
-  const existGuitar = (id: TGuitar['id']): boolean => cart.some(item => item.id === id);
-
   const addToCart = (guitar: TGuitar) => setCart([...cart, { ...guitar, quantity: 1 }]);
 
   const removeFromCart = (id: TGuitar['id']) => {
@@ -19,26 +17,28 @@ function App() {
     setCart(newCart);
   }
 
-  const increaseQuantity = (id: TGuitar['id']) => {
-    if (cart.find(item => item.id === id)!.quantity >= MAX_QUANTITY) return;
+  const increaseQuantity = (guitarCartItem: TGuitarCartItem) => {
+    if (guitarCartItem.quantity >= MAX_QUANTITY) return;
 
-    const newCart = cart.map(item => item.id === id ? { ...item, quantity: item.quantity + INCREASE } : item);
+    const newCart = cart.map(item => item.id === guitarCartItem.id ? { ...item, quantity: item.quantity + INCREASE } : item);
     setCart(newCart);
   }
 
-  const decreaseQuantity = (id: TGuitar['id']) => {
-    if (cart.find(item => item.id === id)!.quantity <= MIN_QUANTITY) {
-      removeFromCart(id);
+  const decreaseQuantity = (guitarCartItem: TGuitarCartItem) => {
+    if (guitarCartItem.quantity <= MIN_QUANTITY) {
+      removeFromCart(guitarCartItem.id);
       return;
     }
 
-    const newCart = cart.map(item => item.id === id ? { ...item, quantity: item.quantity - INCREASE } : item);
+    const newCart = cart.map(item => item.id === guitarCartItem.id ? { ...item, quantity: item.quantity - INCREASE } : item);
     setCart(newCart);
   }
 
   const handleCart = (guitar: TGuitar) => {
-    if (existGuitar(guitar.id)) {
-      increaseQuantity(guitar.id);
+    const existGuitar = cart.find(item => item.id === guitar.id);
+
+    if (existGuitar) {
+      increaseQuantity(existGuitar);
     } else {
       addToCart(guitar);
     }
