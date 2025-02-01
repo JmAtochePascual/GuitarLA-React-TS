@@ -12,7 +12,7 @@ const GuitarCartItem = ({ guitarItem, increaseQuantity, decreaseQuantity, remove
   return (
     <tr>
       <td>
-        <img className="img-fluid" src={`/img/${image}.jpg`} alt={`imagen guitarra ${name}`} />
+        <img className="img-fluid" src={`img/${image}.jpg`} alt={`imagen guitarra ${name}`} />
       </td>
       <td>{name}</td>
       <td className="fw-bold">
