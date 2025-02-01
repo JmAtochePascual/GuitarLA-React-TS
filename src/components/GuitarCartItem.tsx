@@ -1,11 +1,12 @@
-import { TGuitarCartItem } from "../types";
+import { TGuitar, TGuitarCartItem } from "../types";
 
 type GuitarCartItemProps = {
   guitarItem: TGuitarCartItem;
+  increaseQuantity: (id: TGuitar['id']) => void;
   removeFromCart: (id: TGuitarCartItem['id']) => void;
 }
 
-const GuitarCartItem = ({ guitarItem, removeFromCart }: GuitarCartItemProps) => {
+const GuitarCartItem = ({ guitarItem, increaseQuantity, removeFromCart }: GuitarCartItemProps) => {
   const { id, name, price, quantity, image } = guitarItem;
   return (
     <tr>
@@ -25,6 +26,7 @@ const GuitarCartItem = ({ guitarItem, removeFromCart }: GuitarCartItemProps) => 
         {quantity}
         <button
           type="button"
+          onClick={() => increaseQuantity(id)}
           className="btn btn-dark">
           +
         </button>
