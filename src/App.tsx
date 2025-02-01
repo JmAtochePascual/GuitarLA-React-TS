@@ -8,6 +8,7 @@ function App() {
   const [cart, setCart] = useState<TGuitarCartItem[]>([]);
   const INCREASE = 1;
   const MAX_QUANTITY = 5;
+  const MIN_QUANTITY = 1;
 
   const existGuitar = (id: TGuitar['id']): boolean => cart.some(item => item.id === id);
 
@@ -25,6 +26,16 @@ function App() {
     setCart(newCart);
   }
 
+  const decreaseQuantity = (id: TGuitar['id']) => {
+    if (cart.find(item => item.id === id)!.quantity <= MIN_QUANTITY) {
+      removeFromCart(id);
+      return;
+    }
+
+    const newCart = cart.map(item => item.id === id ? { ...item, quantity: item.quantity - INCREASE } : item);
+    setCart(newCart);
+  }
+
   const handleCart = (guitar: TGuitar) => {
     if (existGuitar(guitar.id)) {
       increaseQuantity(guitar.id);
@@ -38,6 +49,7 @@ function App() {
       <Header
         cart={cart}
         increaseQuantity={increaseQuantity}
+        decreaseQuantity={decreaseQuantity}
         removeFromCart={removeFromCart}
       />
 

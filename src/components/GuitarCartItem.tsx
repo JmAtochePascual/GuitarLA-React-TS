@@ -3,10 +3,11 @@ import { TGuitar, TGuitarCartItem } from "../types";
 type GuitarCartItemProps = {
   guitarItem: TGuitarCartItem;
   increaseQuantity: (id: TGuitar['id']) => void;
+  decreaseQuantity: (id: TGuitar['id']) => void;
   removeFromCart: (id: TGuitarCartItem['id']) => void;
 }
 
-const GuitarCartItem = ({ guitarItem, increaseQuantity, removeFromCart }: GuitarCartItemProps) => {
+const GuitarCartItem = ({ guitarItem, increaseQuantity, decreaseQuantity, removeFromCart }: GuitarCartItemProps) => {
   const { id, name, price, quantity, image } = guitarItem;
   return (
     <tr>
@@ -20,6 +21,7 @@ const GuitarCartItem = ({ guitarItem, increaseQuantity, removeFromCart }: Guitar
       <td className="flex align-items-start gap-4">
         <button
           type="button"
+          onClick={() => decreaseQuantity(id)}
           className="btn btn-dark">
           -
         </button>
