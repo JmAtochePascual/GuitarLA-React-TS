@@ -1,50 +1,105 @@
-# React + TypeScript + Vite
+# 🎸 Guitar Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Guitar Store es una aplicación web de comercio electrónico especializada en la venta de guitarras. Permite a los usuarios explorar un catálogo de guitarras, agregar productos al carrito de compras, gestionar cantidades y persistir el carrito en el almacenamiento local del navegador.
 
-Currently, two official plugins are available:
+## 🛠️ Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React**: Framework principal para la construcción de la interfaz de usuario
+- **TypeScript**: Lenguaje de programación que agrega tipado estático a JavaScript
+- **Vite**: Herramienta de compilación que ofrece un entorno de desarrollo más rápido
+- **CSS Modules**: Para el estilado modular y evitar conflictos de nombres
+- **LocalStorage**: Para persistir el estado del carrito de compras
+- **ESLint**: Para mantener la calidad y consistencia del código
+- **Git**: Sistema de control de versiones
 
-## Expanding the ESLint configuration
+## 📁 Estructura del Proyecto
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **src**: Directorio principal del código fuente
+  - **components**: Componentes reutilizables de React
+    - Guitar.tsx: Componente para mostrar una guitarra individual
+    - GuitarCartItem.tsx: Componente para mostrar un item del carrito
+    - Header.tsx: Componente del encabezado con el carrito
+  - **data**: Datos estáticos de la aplicación
+    - guitars.ts: Array con la información de las guitarras
+  - **types**: Definiciones de tipos TypeScript
+    - index.ts: Tipos y interfaces compartidos
+  - App.tsx: Componente principal de la aplicación
+  - main.tsx: Punto de entrada de la aplicación
 
-- Configure the top-level `parserOptions` property like this:
+## 🚀 Características Principales
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- Catálogo de guitarras con imágenes y detalles
+- Carrito de compras con persistencia local
+- Gestión de cantidades en el carrito
+- Interfaz responsiva
+- Tipado estricto con TypeScript
+- Manejo de estado local con React hooks
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🛠️ Instalación y Uso
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Clona el repositorio:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```bash
+   git clone https://github.com/JMatochePascual/GuitarLA-React-TS.git
+   ```
+
+2. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+3. Inicia el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Abre tu navegador en:
+   ```bash
+   http://localhost:5173
+   ```
+
+## 🤝 Contribución
+
+Si deseas contribuir al proyecto, sigue estos pasos:
+
+1. Haz un Fork del repositorio:
+
+   ```bash
+   git remote add upstream https://github.com/JMatochePascual/GuitarLA-React-TS.git
+   ```
+
+2. Crea una nueva rama:
+
+   ```bash
+   git checkout -b feature/nueva-caracteristica
+   ```
+
+3. Realiza tus cambios y haz commit:
+
+   ```bash
+   git add .
+   git commit -m "Agrega nueva característica"
+   ```
+
+4. Sube los cambios a tu Fork:
+
+   ```bash
+   git push origin feature/nueva-caracteristica
+   ```
+
+5. Abre un Pull Request desde tu repositorio al repositorio original
+
+Por favor, antes de realizar cambios importantes:
+
+- Abre un Issue para discutir las modificaciones propuestas
+- Asegúrate de que tu código sigue las convenciones del proyecto
+- Incluye tests si es necesario
+- Actualiza la documentación según corresponda
+
+## 📝 Licencia
+
+Este proyecto está bajo la licencia [MIT](https://opensource.org/licenses/MIT).
+
+<p style="text-align: center">Hecho con 💚 por JMCode | ©2025 - Transformando ideas en realidad.</p>
