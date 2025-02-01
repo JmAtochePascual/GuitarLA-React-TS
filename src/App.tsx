@@ -10,9 +10,9 @@ function App() {
   const MAX_QUANTITY = 5;
   const MIN_QUANTITY = 1;
 
-  const addToCart = (guitar: TGuitar) => setCart([...cart, { ...guitar, quantity: 1 }]);
-
   const searchCartItem = (id: TGuitar['id']) => cart.find(item => item.id === id);
+
+  const addToCart = (guitar: TGuitar) => setCart([...cart, { ...guitar, quantity: 1 }]);
 
   const removeFromCart = (id: TGuitar['id']) => {
     const newCart = cart.filter(item => item.id !== id);
@@ -20,17 +20,14 @@ function App() {
   }
 
   const increaseQuantity = (guitarCartItem: TGuitarCartItem) => {
-    if (guitarCartItem.quantity >= MAX_QUANTITY) return;
+    if (guitarCartItem.quantity === MAX_QUANTITY) return;
 
     const newCart = cart.map(item => item.id === guitarCartItem.id ? { ...item, quantity: item.quantity + INCREASE } : item);
     setCart(newCart);
   }
 
   const decreaseQuantity = (guitarCartItem: TGuitarCartItem) => {
-    if (guitarCartItem.quantity <= MIN_QUANTITY) {
-      removeFromCart(guitarCartItem.id);
-      return;
-    }
+    if (guitarCartItem.quantity === MIN_QUANTITY) return;
 
     const newCart = cart.map(item => item.id === guitarCartItem.id ? { ...item, quantity: item.quantity - INCREASE } : item);
     setCart(newCart);
