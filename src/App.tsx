@@ -36,6 +36,8 @@ function App() {
     setCart(newCart);
   }
 
+  const cleanCart = () => setCart([]);
+
   const handleCart = (guitar: TGuitar) => {
     const existGuitar = searchCartItem(guitar.id);
 
@@ -53,6 +55,7 @@ function App() {
         increaseQuantity={increaseQuantity}
         decreaseQuantity={decreaseQuantity}
         removeFromCart={removeFromCart}
+        cleanCart={cleanCart}
       />
 
       <main className="container-xl mt-5">

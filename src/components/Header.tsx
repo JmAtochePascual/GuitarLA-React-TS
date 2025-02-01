@@ -6,9 +6,10 @@ type HeaderProps = {
   increaseQuantity: (GuitarCartItem: TGuitarCartItem) => void;
   decreaseQuantity: (GuitarCartItem: TGuitarCartItem) => void;
   removeFromCart: (id: TGuitarCartItem['id']) => void;
+  cleanCart: () => void;
 };
 
-const Header = ({ cart, increaseQuantity, decreaseQuantity, removeFromCart }: HeaderProps) => {
+const Header = ({ cart, increaseQuantity, decreaseQuantity, removeFromCart, cleanCart }: HeaderProps) => {
   const isCartEmpty = cart.length === 0;
   const totaTolPay = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -55,7 +56,11 @@ const Header = ({ cart, increaseQuantity, decreaseQuantity, removeFromCart }: He
                         </tbody>
                       </table>
                       <p className="text-end">Total pagar: <span className="fw-bold">{totaTolPay}</span></p>
-                      <button className="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
+                      <button
+                        onClick={cleanCart}
+                        className="btn btn-dark w-100 mt-3 p-2">
+                        Vaciar Carrito
+                      </button>
                     </>
                 }
               </div>
