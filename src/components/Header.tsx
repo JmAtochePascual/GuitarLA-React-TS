@@ -3,9 +3,10 @@ import GuitarCartItem from "./GuitarCartItem";
 
 type HeaderProps = {
   cart: TGuitarCartItem[];
+  removeFromCart: (id: TGuitarCartItem['id']) => void;
 };
 
-const Header = ({ cart }: HeaderProps) => {
+const Header = ({ cart, removeFromCart }: HeaderProps) => {
   const isCartEmpty = cart.length === 0;
   const totaTolPay = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -43,6 +44,7 @@ const Header = ({ cart }: HeaderProps) => {
                               <GuitarCartItem
                                 key={guitarItem.id}
                                 guitarItem={guitarItem}
+                                removeFromCart={removeFromCart}
                               />
                             )
                           }

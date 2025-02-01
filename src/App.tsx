@@ -13,6 +13,11 @@ function App() {
 
   const addToCart = (guitar: TGuitar) => setCart([...cart, { ...guitar, quantity: 1 }]);
 
+  const removeFromCart = (id: TGuitar['id']) => {
+    const newCart = cart.filter(item => item.id !== id);
+    setCart(newCart);
+  }
+
   const increaseQuantity = (guitar: TGuitar) => {
     if (cart.find(item => item.id === guitar.id)!.quantity >= MAX_QUANTITY) return;
 
@@ -32,6 +37,7 @@ function App() {
     <>
       <Header
         cart={cart}
+        removeFromCart={removeFromCart}
       />
 
       <main className="container-xl mt-5">
