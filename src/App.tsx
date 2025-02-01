@@ -1,14 +1,18 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Guitar from "./components/Guitar"
 import Header from "./components/Header"
 import { GUITARS } from "./data/guitars"
 import { TGuitar, TGuitarCartItem } from "./types";
 
 function App() {
-  const [cart, setCart] = useState<TGuitarCartItem[]>([]);
+  const [cart, setCart] = useState<TGuitarCartItem[]>(JSON.parse(localStorage.getItem('cartGuitar') || '[]'));
   const INCREASE = 1;
   const MAX_QUANTITY = 5;
   const MIN_QUANTITY = 1;
+
+  useEffect(() => {
+    localStorage.setItem('cartGuitar', JSON.stringify(cart));
+  }, [cart]);
 
   const searchCartItem = (id: TGuitar['id']) => cart.find(item => item.id === id);
 
